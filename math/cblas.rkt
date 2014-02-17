@@ -2,7 +2,8 @@
 (require ffi/unsafe ffi/unsafe/define ffi/vector)
 
 (define-ffi-definer define-cblas
-  (ffi-lib "libcblas" #:fail #f))
+  (ffi-lib "libcblas" #:fail (lambda ()
+  (ffi-lib "libgslcblas"))))
 
 (define-cblas cblas_dswap
   (_fun _int _f64vector _int _f64vector _int -> _void))
